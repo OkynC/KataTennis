@@ -1,0 +1,31 @@
+
+with "../kata_tennis";
+with "AUnit";
+
+project Harness_Kata_Tennis is
+
+   for Languages use ("Ada");
+
+   for Source_Dirs use ("sources/**");
+   for Exec_Dir use "D:\Users\t0127398\Documents\Mes Outils Personnels\binaries";
+   for Object_Dir use "objects";
+
+   for Main use (
+                 "harness.adb",
+                 "harness_v2.adb"
+                );
+
+   package Compiler is
+      Ada_Flags    := ("-gnat12", "-fstack-check", "-gnatVa", "-gnatU", "-gnateE", "-gnateA");
+
+      Compil_Flags := ("-gnatwa.hlo.o.st.u.w",
+                       "-Wall",
+                       "-Wextra",
+                       "-Wno-maybe-uninitialized"
+                      );
+
+      Prod_Flags   := ("-O2");
+      for Default_Switches ("Ada") use Prod_Flags & Ada_Flags & Compil_Flags;
+   end Compiler;
+
+end Harness_Kata_Tennis;
