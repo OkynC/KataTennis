@@ -20,4 +20,4 @@ jobs:
         sudo apt-get install gnat gprbuild
 
     - name: Build
-      run: gprbuild
+      run: gprbuild -p
