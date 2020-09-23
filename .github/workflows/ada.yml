@@ -13,18 +13,22 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      
+    - name: ada-actions/toolchain
+      # You may pin to the exact commit or the version.
+      # uses: ada-actions/toolchain@b55aaa71402c4150fa072d08739aeeda4b99f2be
+      uses: ada-actions/toolchain@v0.2.0
+      with:
+        # GNAT distribution (fsf or community)
+        distrib: fsf
+        # Target architecture (native, arm-elf, riscv32-elf)
+        target: native
+        # Year of the community release (2020, 2019)
+        community_year: 2020
 
     - name: Set up GNAT toolchain
-      run: >
-        sudo apt-get update && 
-        sudo apt-get install gnat gpr gprbuild
-
-    - name: Build
-      run: gprbuild -p
-    
-    - name: Tests
       run: |
-        which gprbuild
+        gprbuild -p
         cd tests
         gprbuild -p
         ./bin/harness.exe
