@@ -24,6 +24,7 @@ jobs:
     
     - name: Tests
       run: |
+        which gprbuild
         cd tests
         gprbuild -p
         ./bin/harness.exe
