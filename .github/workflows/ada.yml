@@ -20,7 +20,7 @@ jobs:
       uses: ada-actions/toolchain@v0.2.0
       with:
         # GNAT distribution (fsf or community)
-        distrib: fsf
+        distrib: community
         # Target architecture (native, arm-elf, riscv32-elf)
         target: native
         # Year of the community release (2020, 2019)
